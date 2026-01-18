@@ -1,0 +1,676 @@
+<!DOCTYPE html> <!--  -->
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svelte Framework - Approfondimento Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<body class="bg-light">
+    <div id="app" class="d-flex flex-column min-vh-100">
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#" @click.prevent="currentView = 'intro'">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg" alt="Logo" width="30" height="30" class="me-2">
+                    <span class="fw-bold">Svelte</span><span class="text-svelte ms-1">Insight</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav ms-auto gap-2 align-items-center">
+    
+    <li class="nav-item">
+        <a class="nav-link px-3 rounded fw-bold" 
+           :class="currentView === 'intro' ? 'btn-svelte text-white shadow-sm' : 'text-dark'" 
+           href="#" @click.prevent="currentView = 'intro'">
+           Introduzione
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link px-3 rounded fw-bold" 
+           :class="currentView === 'tecnica' ? 'btn-svelte text-white shadow-sm' : 'text-dark'" 
+           href="#" @click.prevent="currentView = 'tecnica'">
+           Caratteristiche
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link px-3 rounded fw-bold" 
+           :class="currentView === 'dati' ? 'btn-svelte text-white shadow-sm' : 'text-dark'" 
+           href="#" @click.prevent="currentView = 'dati'">
+           Statistiche
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link px-3 rounded fw-bold" 
+           :class="currentView === 'crud' ? 'btn-svelte text-white shadow-sm' : 'text-dark'" 
+           href="#" @click.prevent="currentView = 'crud'">
+          Risorse
+        </a>
+    </li>
+
+</ul>
+                </div>
+            </div>
+        </nav> <main class="container my-5 flex-grow-1">
+            
+
+
+
+
+          <section v-if="currentView === 'intro'" class="fade-in">
+              
+                <div class="row align-items-center py-5">
+                    <div class="col-lg-6">
+                        <h1 class="display-4 fw-bold mb-3">Cybernetically enhanced <span class="text-svelte">web apps</span></h1>
+                        <p class="lead text-muted mb-4">Svelte è un approccio radicalmente nuovo alla creazione di interfacce utente. Sposta il lavoro dal browser alla fase di compilazione.</p>
+                    </div>
+                    <div class="col-lg-6 text-center mt-4 mt-lg-0">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg" alt="Svelte Logo" class="img-fluid" style="max-height: 280px;">
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm p-4 mb-4">
+                    <div class="card-body">
+                        <h2 class="border-bottom pb-2 mb-4 text-svelte">Cos'è Svelte?</h2>
+                        
+                        <p class="mb-3">
+                            Svelte è uno strumento per costruire applicazioni web. Come altri framework per interfacce utente, 
+                            ti permette di costruire la tua app in modo <strong>dichiarativo</strong> usando componenti che combinano markup, stili e comportamenti.
+                        </p>
+                        
+                        <p class="mb-3">
+                            Questi componenti vengono <strong>compilati</strong> in moduli JavaScript piccoli ed efficienti che eliminano 
+                            il sovraccarico (overhead) tradizionalmente associato ai framework UI.
+                        </p>
+
+                        <div class="alert bg-light border-start border-4 mb-0" style="border-color: #ff3e00 !important;">
+                            <p class="mb-0 small text-muted">
+                                Puoi costruire l'intera app con Svelte (ad esempio usando SvelteKit), aggiungerlo incrementalmente 
+                                a una codebase esistente, oppure distribuire componenti come pacchetti autonomi che funzionano ovunque.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm p-4 mb-5">
+                    <div class="card-body">
+                        <h2 class="border-bottom pb-2 mb-4 text-svelte">Perché Svelte?</h2>
+                        
+                        <p class="mb-4">
+                            Svelte è un approccio radicalmente nuovo alla costruzione di interfacce utente. 
+                            Mentre i framework tradizionali come React e Vue fanno gran parte del loro lavoro nel browser, 
+                            Svelte sposta quel lavoro in una fase di compilazione che avviene quando costruisci la tua app.
+                            Il risultato? Applicazioni incredibilmente veloci che non richiedono framework pesanti da caricare nel browser dell'utente.
+                        </p>
+
+                        <div class="bg-light p-3 rounded">
+                            <h3 class="h5 fw-bold text-dark mb-2"> Zero Run Time</h3>
+                            <p class="mb-0 small text-muted">
+                                Svelte compila il tuo codice in JavaScript altamente ottimizzato durante la build, 
+                                eliminando la necessità di un runtime pesante. Questo significa app più veloci e bundle più piccoli.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-5">
+
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm text-center">
+                            <div class="card-body p-4">
+                                <div class="text-svelte mb-3">
+                                    <i class="bi bi-lightning-charge-fill" style="font-size: 2.5rem;"></i>
+                                </div>
+                                <h3 class="h5 fw-bold">Nessun Virtual DOM</h3>
+                                <p class="text-muted small">Svelte compila il codice in piccoli moduli JavaScript imperativi che aggiornano il DOM chirurgicamente.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm text-center">
+                            <div class="card-body p-4">
+                                <div class="text-svelte mb-3">
+                                    <i class="bi bi-box-seam-fill" style="font-size: 2.5rem;"></i>
+                                </div>
+                                <h3 class="h5 fw-bold">Meno Codice</h3>
+                                <p class="text-muted small">Scrivi componenti usando HTML, CSS e JavaScript standard. Meno boilerplate significa meno bug.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm text-center">
+                            <div class="card-body p-4">
+                                <div class="text-svelte mb-3">
+                                    <i class="bi bi-arrow-repeat" style="font-size: 2.5rem;"></i>
+                                </div>
+                                <h3 class="h5 fw-bold">Reattività Vera</h3>
+                                <p class="text-muted small">Non serve chiamare setState. La reattività è nel linguaggio stesso: <code>count += 1</code>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        
+                <div class="row justify-content-center mb-5">
+                    <div class="col-lg-8">
+                        <div class="card h-100 border-0 shadow-sm"> 
+                            <div class="card-body p-5 text-center">
+                                <div class="text-svelte fs-1 mb-3 "></div>
+                                <h3 class="h5 fw-bold mb-3">Pronto a iniziare?</h3>
+                                <p class="text-muted mb-4">Svelte sta rivoluzionando il modo in cui costruiamo applicazioni web moderne.</p>
+                                <button class="btn btn-svelte text-white btn-lg" @click="currentView = 'tecnica'">
+                                    Scopri i dettagli tecnici
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+
+
+       <section v-if="currentView === 'tecnica'" class="fade-in">
+                
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold text-svelte">Caratteristiche Tecniche</h2>
+                    <p>Esplora i concetti fondamentali di Svelte: componenti, reattività e gestione dello stato</p>
+                </div>
+
+                <div class="row align-items-center mb-5 g-5">
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm p-4 h-100">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-arrow-repeat text-svelte fs-3 me-2"></i>
+                                <h3 class="fw-bold m-0 h4">Reattività in Svelte</h3>
+                            </div>
+                            
+                            <p class="text-muted mb-4">
+                                La reattività in Svelte è dichiarativa e automatica. Usa il simbolo <code>$:</code> per creare dichiarazioni reattive che si aggiornano automaticamente quando le dipendenze cambiano.
+                            </p>
+
+                            <div class="alert bg-light border-0 border-start border-4 rounded-end" style="border-color: #ff3e00 !important;">
+                                <strong class="text-svelte">Vantaggio:</strong> Nessun hook da ricordare, la reattività è integrata nel linguaggio.
+                            </div>
+
+                            <ul class="list-unstyled mt-4 space-y-2">
+                                <li class="mb-2 d-flex align-items-center text-secondary">
+                                    <i class="bi bi-chevron-right text-svelte me-2"></i> Dichiarazioni reattive con <code>$:</code>
+                                </li>
+                                <li class="mb-2 d-flex align-items-center text-secondary">
+                                    <i class="bi bi-chevron-right text-svelte me-2"></i> Aggiornamenti automatici del DOM
+                                </li>
+                                <li class="d-flex align-items-center text-secondary">
+                                    <i class="bi bi-chevron-right text-svelte me-2"></i> Nessun Virtual DOM diffing
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card text-white shadow-lg border-0 overflow-hidden" style="background-color: #1e1e1e;">
+                            <div class="card-header border-bottom border-secondary py-3 bg-transparent">
+                                <span class="fw-bold text-svelte">Esempio di Codice</span>
+                            </div>
+                            <div class="card-body font-monospace p-4" style="font-size: 0.9rem;">
+                                <div style="color: #569cd6;">&lt;script&gt;</div>
+                                <div class="ps-3 mb-2">
+                                    <span style="color: #c586c0;">let</span> count = <span style="color: #b5cea8;">0</span>;
+                                </div>
+                                <div class="ps-3 text-secondary">// Reattività automatica</div>
+                                <div class="ps-3 mb-2">
+                                    <span style="color: #dcdcaa;">$:</span> doubled = count * <span style="color: #b5cea8;">2</span>;
+                                </div>
+                                <div class="ps-3">
+                                    <span style="color: #c586c0;">function</span> <span style="color: #dcdcaa;">increment</span>() {
+                                </div>
+                                <div class="ps-4">
+                                    count += <span style="color: #b5cea8;">1</span>;
+                                </div>
+                                <div class="ps-3">}</div>
+                                <div style="color: #569cd6;">&lt;/script&gt;</div>
+                                <br>
+                                <div>
+                                    <span style="color: #569cd6;">&lt;button</span> <span style="color: #9cdcfe;">on:click</span>=<span style="color: #ce9178;">{increment}</span><span style="color: #569cd6;">&gt;</span>
+                                </div>
+                                <div class="ps-3">Contatore: {count}</div>
+                                <div style="color: #569cd6;">&lt;/button&gt;</div>
+                                <br>
+                                <div>
+                                    <span style="color: #569cd6;">&lt;p&gt;</span>Doppio: {doubled}<span style="color: #569cd6;">&lt;/p&gt;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center mb-5 g-5">
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm p-4 h-100">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-code-slash text-svelte fs-3 me-2"></i>
+                                <h3 class="fw-bold m-0 h4">Componenti Svelte</h3>
+                            </div>
+                            
+                            <p class="text-muted mb-4">
+                                I componenti Svelte sono file singoli che contengono script, markup e stili. Le props vengono definite con <code>export let</code> e gli stili sono automaticamente scoped.
+                            </p>
+
+                            <div class="alert bg-light border-0 border-start border-4 rounded-end" style="border-color: #ff3e00 !important;">
+                                <strong class="text-svelte">Vantaggio:</strong> CSS scoped automaticamente senza configurazione.
+                            </div>
+
+                            <ul class="list-unstyled mt-4 space-y-2">
+                                <li class="mb-2 d-flex align-items-center text-secondary">
+                                    <i class="bi bi-chevron-right text-svelte me-2"></i> Single File Components
+                                </li>
+                                <li class="mb-2 d-flex align-items-center text-secondary">
+                                    <i class="bi bi-chevron-right text-svelte me-2"></i> Props con export let
+                                </li>
+                                <li class="d-flex align-items-center text-secondary">
+                                    <i class="bi bi-chevron-right text-svelte me-2"></i> Slots per contenuto dinamico
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card text-white shadow-lg border-0 overflow-hidden" style="background-color: #1e1e1e;">
+                            <div class="card-header border-bottom border-secondary py-3 bg-transparent">
+                                <span class="fw-bold text-svelte">Esempio di Codice</span>
+                            </div>
+                            <div class="card-body font-monospace p-4" style="font-size: 0.9rem;">
+                                <div style="color: #569cd6;">&lt;script&gt;</div>
+                                <div class="ps-3">
+                                    <span style="color: #c586c0;">export let</span> name = <span style="color: #ce9178;">'Mondo'</span>;
+                                </div>
+                                <div class="ps-3 mb-2">
+                                    <span style="color: #c586c0;">export let</span> size = <span style="color: #ce9178;">'medium'</span>;
+                                </div>
+                                <div style="color: #569cd6;">&lt;/script&gt;</div>
+                                <br>
+                                <div>
+                                    <span style="color: #569cd6;">&lt;div</span> <span style="color: #9cdcfe;">class</span>=<span style="color: #ce9178;">"card {size}"</span><span style="color: #569cd6;">&gt;</span>
+                                </div>
+                                <div class="ps-3 text-white">
+                                    &lt;h1&gt;Ciao {name}!&lt;/h1&gt;
+                                </div>
+                                <div class="ps-3 text-white">
+                                    &lt;slot&gt;&lt;/slot&gt;
+                                </div>
+                                <div style="color: #569cd6;">&lt;/div&gt;</div>
+                                <br>
+                                <div style="color: #569cd6;">&lt;style&gt;</div>
+                                <div class="ps-3" style="color: #ce9178;">.card <span style="color: #ffd700;">{</span> padding: 1rem; <span style="color: #ffd700;">}</span></div>
+                                <div class="ps-3" style="color: #ce9178;">.medium <span style="color: #ffd700;">{</span> font-size: 1rem; <span style="color: #ffd700;">}</span></div>
+                                <div style="color: #569cd6;">&lt;/style&gt;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center mb-5 g-5">
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm p-4 h-100">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-database text-svelte fs-3 me-2"></i>
+                                <h3 class="fw-bold m-0 h4">Gestione dello Stato</h3>
+                            </div>
+                            
+                            <p class="text-muted mb-4">
+                                Gli stores di Svelte forniscono un modo semplice per gestire lo stato globale. Usa il prefisso <code>$</code> per sottoscriverti automaticamente.
+                            </p>
+
+                            <div class="alert bg-light border-0 border-start border-4 rounded-end" style="border-color: #ff3e00 !important;">
+                                <strong class="text-svelte">Vantaggio:</strong> Gestione dello stato semplificata senza boilerplate.
+                            </div>
+
+                            <ul class="list-unstyled mt-4 space-y-2">
+                                <li class="mb-2 d-flex align-items-center text-secondary">
+                                    <i class="bi bi-chevron-right text-svelte me-2"></i> Writable stores
+                                </li>
+                                <li class="mb-2 d-flex align-items-center text-secondary">
+                                    <i class="bi bi-chevron-right text-svelte me-2"></i> Readable stores
+                                </li>
+                                <li class="d-flex align-items-center text-secondary">
+                                    <i class="bi bi-chevron-right text-svelte me-2"></i> Derived stores
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card text-white shadow-lg border-0 overflow-hidden" style="background-color: #1e1e1e;">
+                            <div class="card-header border-bottom border-secondary py-3 bg-transparent">
+                                <span class="fw-bold text-svelte">Esempio di Codice</span>
+                            </div>
+                            <div class="card-body font-monospace p-4" style="font-size: 0.9rem;">
+                                <div style="color: #569cd6;">&lt;script&gt;</div>
+                                <div class="ps-3 mb-2">
+                                    <span style="color: #c586c0;">import</span> { writable } <span style="color: #c586c0;">from</span> <span style="color: #ce9178;">'svelte/store'</span>;
+                                </div>
+                                <br>
+                                <div class="ps-3 mb-2">
+                                    <span style="color: #569cd6;">const</span> count = writable(<span style="color: #b5cea8;">0</span>);
+                                </div>
+                                <br>
+                                <div class="ps-3">
+                                    <span style="color: #c586c0;">function</span> <span style="color: #dcdcaa;">increment</span>() {
+                                </div>
+                                <div class="ps-4">
+                                    count.update(n => n + <span style="color: #b5cea8;">1</span>);
+                                </div>
+                                <div class="ps-3">}</div>
+                                <div style="color: #569cd6;">&lt;/script&gt;</div>
+                                <br>
+                                <div>
+                                    <span style="color: #569cd6;">&lt;button</span> <span style="color: #9cdcfe;">on:click</span>=<span style="color: #ce9178;">{increment}</span><span style="color: #569cd6;">&gt;</span>
+                                </div>
+                                <div class="ps-3 text-white">
+                                    Incrementa
+                                </div>
+                                <div style="color: #569cd6;">&lt;/button&gt;</div>
+                                <div class="mt-2">
+                                    <span style="color: #569cd6;">&lt;p&gt;</span>Valore: {$count}<span style="color: #569cd6;">&lt;/p&gt;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<div class="card border-0 shadow-lg mt-5 text-white overflow-hidden">
+                    <div class="card-body p-5 text-center" style="background: #ff3e00">
+
+                        <h2 class="fw-bold mb-4 display-8">Come Funziona la Compilazione</h2>
+                        
+                        <div class="row justify-content-center">
+                            <div class="col-lg-9">
+                                <p class="fs-5 mb-4" style="opacity: 0.95;">
+                                    Svelte non è una libreria che il browser deve eseguire: è un <strong>compilatore</strong>.
+                                    Mentre costruisci la tua app, Svelte trasforma i tuoi componenti in codice JavaScript vanilla imperativo altamente efficiente.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row g-4 justify-content-center mt-2 text-white">
+                            <div class="col-md-3">
+                                <div class="p-3 bg-white bg-opacity-10 rounded border border-white border-opacity-25">
+                                    <i class="bi bi-code-square fs-2 mb-2 d-block"></i>
+                                    <h5 class="fw-bold">1. Tu Scrivi</h5>
+                                    <small>Codice dichiarativo (HTML, CSS, JS)</small>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-1 d-none d-md-flex align-items-center justify-content-center">
+                                <i class="bi bi-arrow-right fs-1 opacity-50"></i>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="p-3 bg-white bg-opacity-10 rounded border border-white border-opacity-25">
+                                    <i class="bi bi-gear-wide-connected fs-2 mb-2 d-block"></i>
+                                    <h5 class="fw-bold">2. Svelte Compila</h5>
+                                    <small>Analisi e ottimizzazione alla build</small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1 d-none d-md-flex align-items-center justify-content-center">
+                                <i class="bi bi-arrow-right fs-1 opacity-50"></i>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="p-3 bg-white bg-opacity-10 rounded border border-white border-opacity-25">
+                                    <i class="bi bi-gear-wide-connected fs-2 mb-2 d-block"></i>
+                                    <h5 class="fw-bold">3. Browser Esegue</h5>
+                                    <small>JS veloce, nessun Virtual DOM</small>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+
+
+
+            <section v-if="currentView === 'dati'" class="fade-in">
+                <div class="mb-5 text-center">
+                    <h2 class="fw-bold text-svelte">Dashboard Statistiche</h2>
+                    <p>Analisi dell'adozione di Svelte nel mondo: sviluppatori, progetti e soddisfazione</p>
+                
+                </div>
+
+                <div class="row g-4 mb-5" v-if="dashboardData && dashboardData.cards">
+                    <div class="col-6 col-md-3" v-for="card in dashboardData.cards" :key="card.id">
+                        <div class="card border-0 shadow-sm h-100 text-center py-3">
+                            <div class="card-body">
+                                <h6 class="text-muted text-uppercase small fw-bold">{{ card.label }}</h6>
+                                <div class="display-6 fw-bold text-svelte my-2">{{ card.valore }}</div>
+                                <small class="text-muted">{{ card.sub }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-5">
+                    
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-white py-3">
+                                <h5 class="mb-0 fw-bold">Dettagli Progetti</h5>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Paese</th>
+                                            <th>Progetti</th>
+                                            <th>Crescita</th>
+                                            <th>Soddisfazione</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(p, index) in dashboardData.paesi" :key="index">
+                                            <td class="fw-bold">{{ p.paese }}</td>
+                                            <td>{{ p.progetti.toLocaleString() }}</td>
+                                            <td class="text-success fw-bold">{{ p.crescita }}</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="me-2">{{ p.soddisfazione }}</span>
+                                                    <div class="progress w-100" style="height: 6px;">
+                                                        <div class="progress-bar bg-svelte" role="progressbar" :style="{width: p.soddisfazione}"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm h-100 p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="fw-bold mb-0">Sviluppatori per Paese</h5>
+                                <small class="text-muted">Distribuzione globale</small>
+                            </div>
+                            
+                            <div class="chart-container">
+                                <div v-for="p in dashboardData.paesi" :key="p.paese" class="chart-col">
+                                    <span class="chart-label-top">
+                                        {{ (p.sviluppatori / 1000).toFixed(0) }}k
+                                    </span>
+                                    <div class="bar-vertical" 
+                                         :style="{ height: calcolaLunghezzaBarra(p.sviluppatori) + '%' }">
+                                    </div>
+                                    <span class="chart-label-bottom" :title="p.paese">
+                                        {{ p.paese }}
+                                    </span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row g-5 mt-4" v-if="dashboardData.aziende">
+                    
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm h-100 p-4">
+                            <h5 class="fw-bold ">Aziende che usano Svelte</h5>
+                            <p class="text-muted small">Grandi player internazionali che hanno adottato Svelte in produzione.</p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span v-for="azienda in dashboardData.aziende" :key="azienda" 
+                                      class="badge bg-light text-dark border p-2">
+                                    🏢 {{ azienda }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm h-100 p-4">
+                            <h5 class="fw-bold mb-3">Confronto "Bundle Size" (KB)</h5>
+                            <p class="text-muted small">Meno KB significa caricamento più veloce. (Hello World App)</p>
+                            
+                            <div v-for="item in dashboardData.performance" :key="item.framework" class="mb-3">
+                                <div class="d-flex justify-content-between small fw-bold">
+                                    <span>{{ item.framework }}</span>
+                                    <span>{{ item.kb }} KB</span>
+                                </div>
+                                <div class="progress" style="height: 10px;">
+                                    <div class="progress-bar" role="progressbar" 
+                                         :style="{ width: (item.kb / 65) * 100 + '%', backgroundColor: item.colore }">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+
+
+
+
+            <section v-if="currentView === 'crud'" class="fade-in">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold text-svelte">Gestione Risorse Svelte</h2>
+                    <p>Gestisci le tue risorse preferite: aggiungi, modifica ed elimina link utili.</p>
+                </div>
+
+                <div class="bg-white p-3 rounded shadow-sm mb-4">
+                    <div class="row g-2 align-items-center">
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0 text-muted">🔍</span>
+                                <input type="text" class="form-control border-start-0 ps-0" 
+                                       v-model="searchQuery" 
+                                       placeholder="Cerca per nome o categoria...">
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <button class="btn btn-svelte text-white w-100 fw-bold" @click="openAddModal()">
+                                + Nuova Risorsa
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="filteredResources.length > 0">
+                    <div class="card mb-3 border-0 shadow-sm" v-for="(item, index) in filteredResources" :key="index">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="badge bg-dark me-2">{{ item.categoria }}</span>
+                                        <h5 class="mb-0 fw-bold">{{ item.titolo }}</h5>
+                                    </div>
+                                    <a :href="item.url" target="_blank" class="text-decoration-none text-svelte d-block mb-1">
+                                        {{ item.url }} <small>↗</small>
+                                    </a>
+                                    <p class="text-muted small mb-0">{{ item.descrizione }}</p>
+                                </div>
+                                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                                    <button class="btn btn-sm btn-light border me-2" @click="openEditModal(item)">✏️ Modifica</button>
+                                    <button class="btn btn-sm btn-outline-danger" @click="deleteResource(item)">🗑️ Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-else class="text-center py-5">
+                    <div class="mb-3 text-muted fs-1">📭</div>
+                    <p class="text-muted">Nessuna risorsa trovata. Aggiungine una nuova!</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-dark text-white-50 py-4 mt-auto">
+            <div class="container text-center">
+                <p class="mb-0 small">Fondamenti di Sistemi Web - AA 2024/25</p>
+            </div>
+        </footer>
+
+        <div v-if="showModal" class="modal d-block" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border-0 shadow-lg">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">{{ isEditing ? 'Modifica Risorsa' : 'Aggiungi Risorsa' }}</h5>
+                        <button type="button" class="btn-close" @click="showModal = false"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form @submit.prevent="saveResource">
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-muted">TITOLO</label>
+                                <input type="text" class="form-control" v-model="form.titolo" placeholder="Es. Svelte Kit" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-muted">URL</label>
+                                <input type="url" class="form-control" v-model="form.url" placeholder="https://..." required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-muted">CATEGORIA</label>
+                                <select class="form-select" v-model="form.categoria">
+                                    <option v-for="cat in categorie" :value="cat">{{ cat }}</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-muted">DESCRIZIONE</label>
+                                <textarea class="form-control" v-model="form.descrizione" rows="3"></textarea>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-svelte text-white">Salva</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-if="showModal" class="modal-backdrop fade show"></div>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+{
+  "dashboard": {
+    "cards": [
+      { 
+        "id": 1, 
+        "label": "GitHub Stars", 
+        "valore": "79.000+", 
+        "sub": "Tra i framework più amati", 
+        "icona": "⭐" 
+      },
+      { 
+        "id": 2, 
+        "label": "Download NPM", 
+        "valore": "2.5 M", 
+        "sub": "Download settimanali", 
+        "icona": "⬇️" 
+      },
+      { 
+        "id": 3, 
+        "label": "Soddisfazione", 
+        "valore": "91%", 
+        "sub": "State of JS Survey", 
+        "icona": "❤️" 
+      },
+      { 
+        "id": 4, 
+        "label": "Peso Bundle", 
+        "valore": "1.6 KB", 
+        "sub": "Minified & Gzipped", 
+        "icona": "⚖️" 
+      }
+    ],
+    "paesi": [
+      { 
+        "paese": "Stati Uniti", 
+        "sviluppatori": 155000, 
+        "progetti": 62000, 
+        "crescita": "+35%",
+        "soddisfazione": "96%" 
+      },
+      { 
+        "paese": "Regno Unito", 
+        "sviluppatori": 72000, 
+        "progetti": 28000, 
+        "crescita": "+29%",
+        "soddisfazione": "94%" 
+      },
+      { 
+        "paese": "Germania", 
+        "sviluppatori": 68000, 
+        "progetti": 24500, 
+        "crescita": "+31%",
+        "soddisfazione": "92%" 
+      },
+      { 
+        "paese": "Francia", 
+        "sviluppatori": 45000, 
+        "progetti": 18000, 
+        "crescita": "+24%",
+        "soddisfazione": "90%" 
+      },
+      { 
+        "paese": "Italia", 
+        "sviluppatori": 38000, 
+        "progetti": 14000, 
+        "crescita": "+33%",
+        "soddisfazione": "93%" 
+      },
+      { 
+        "paese": "Canada", 
+        "sviluppatori": 35000, 
+        "progetti": 12500, 
+        "crescita": "+26%",
+        "soddisfazione": "91%" 
+      },
+      { 
+        "paese": "Brasile", 
+        "sviluppatori": 26000, 
+        "progetti": 9000, 
+        "crescita": "+40%",
+        "soddisfazione": "89%" 
+      },
+      { 
+        "paese": "Giappone", 
+        "sviluppatori": 22000, 
+        "progetti": 8500, 
+        "crescita": "+18%",
+        "soddisfazione": "88%" 
+      }
+    ],
+    "aziende": [
+      "Apple", "New York Times", "Spotify", "IKEA", "Brave Browser", "Square", "Decathlon", "Cloudflare"
+    ],
+    "performance": [
+      { "framework": "Svelte", "kb": 1.6, "colore": "#ff3e00" },
+      { "framework": "Vue", "kb": 22.9, "colore": "#42b883" },
+      { "framework": "React + DOM", "kb": 42.2, "colore": "#61dafb" },
+      { "framework": "Angular", "kb": 62.2, "colore": "#dd0031" }
+    ]
+  }
+}

@@ -1,0 +1,141 @@
+/* =========================================
+   1. VARIABILI E SETUP GENERALE
+   ========================================= */
+:root {
+    --svelte-orange: #ff3e00;
+    --svelte-hover: #e33600;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto; /* Spinge il footer in basso */
+}
+
+/* =========================================
+   2. NAVBAR E ANIMAZIONI
+   ========================================= */
+.navbar {
+    background-color: white !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   3. TEMA SVELTE (ARANCIONE)
+   ========================================= */
+.text-svelte {
+    color: var(--svelte-orange) !important;
+}
+
+.bg-svelte {
+    background-color: var(--svelte-orange) !important;
+    color: white;
+}
+
+/* Stile per i bordi se serve */
+.border-svelte {
+    border-color: var(--svelte-orange) !important;
+}
+
+/* Bottoni personalizzati */
+.btn-svelte {
+    background-color: var(--svelte-orange);
+    color: white;
+    border: none;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.btn-svelte:hover {
+    background-color: var(--svelte-hover);
+    color: white;
+}
+
+/* =========================================
+   4. GRAFICO VERTICALE (CORRETTO)
+   ========================================= */
+.chart-container {
+    height: 350px;           /* Altezza fissa aumentata per dare respiro */
+    display: flex;
+    align-items: flex-end;   /* Allinea le colonne in basso */
+    justify-content: space-between; /* Distribuisce le colonne */
+    padding-top: 30px;       /* Spazio per i numeri in alto */
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dee2e6; /* Linea dell'asse X */
+}
+
+/* Colonna singola che contiene: Numero, Barra, Paese */
+.chart-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Spinge tutto verso il basso */
+    align-items: center;       /* Centra orizzontalmente */
+    height: 100%;            /* Occupa tutta l'altezza del container */
+    flex: 1;                 /* Ogni colonna ha la stessa larghezza */
+    margin: 0 4px;           /* Spaziatura laterale tra le colonne */
+}
+
+.bar-vertical {
+    width: 100%;             /* La barra riempie la larghezza della sua colonna */
+    background-color: var(--svelte-orange);
+    border-radius: 4px 4px 0 0; /* Arrotonda solo in cima */
+    transition: height 1s ease-in-out; /* Animazione fluida */
+    min-height: 2px;         /* Assicura che si veda anche se il valore è 0 */
+}
+
+/* Etichetta Numero (sopra la barra) */
+.chart-label-top {
+    font-size: 0.75rem;      /* Testo piccolo */
+    font-weight: bold;
+    color: #6c757d;          /* Grigio scuro */
+    margin-bottom: 6px;      /* Spazio tra numero e barra */
+}
+
+/* Etichetta Paese (sotto la barra) */
+.chart-label-bottom {
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 8px;         /* Spazio tra barra e nome */
+    white-space: nowrap;     /* Non andare a capo */
+    overflow: hidden;        /* Nascondi se troppo lungo */
+    text-overflow: ellipsis; /* Metti i puntini (...) */
+    max-width: 60px;         /* Larghezza massima del testo */
+}
+
+/* =========================================
+   5. MODALE E UTILITIES
+   ========================================= */
+.modal-backdrop.show {
+    opacity: 0.5;
+    z-index: 1040;
+}
+
+.modal.d-block {
+    background: rgba(0,0,0,0.5);
+    z-index: 1050;
+}
+
+/* Input arrotondati per la ricerca */
+.search-input {
+    border-radius: 50px;
+}
